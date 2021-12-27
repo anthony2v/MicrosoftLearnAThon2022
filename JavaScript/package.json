@@ -5,9 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
-  "keywords": ["api", "database"],
+  "keywords": [
+    "api",
+    "database"
+  ],
   "author": "Anthony",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.4.5"
+  }
 }
