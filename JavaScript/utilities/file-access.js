@@ -1,4 +1,5 @@
 const fs = require("fs").promises;
+const path = require("path");
 
 exports.findSalesFiles = async function(folderName) {
     // this array will hold sales files as they are found
@@ -16,7 +17,7 @@ exports.findSalesFiles = async function(folderName) {
                 await findFiles(`${folderName}/${item.name}`);
             } else {
                 // check if the found item is a sales file
-                if (item.name === "sales.json") {
+                if (path.extname(item.name) === ".json") {
                     // store the file in the sales files array
                     salesFiles.push(`${folderName}/${item.name}`);
                 }

@@ -4,11 +4,14 @@
  * processing.
  */
 
-const { findSalesFiles } = require("./file-access");
+const { findSalesFiles } = require("./utilities/file-access");
+const path = require("path");
 
 async function main() {
     console.log('Welcome to the Tailwind Traders backend server application');
-    const salesFiles = await findSalesFiles("../stores");
+
+    // find all paths to all available sales files
+    const salesFiles = await findSalesFiles(path.join(__dirname, "stores"));
     console.log(salesFiles);
 }
 
