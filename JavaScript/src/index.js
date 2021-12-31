@@ -4,12 +4,12 @@
  * processing.
  */
 
-const { parse } = require("./adress-parser");
-const { readDirectory, readDirectoryWithFileTypes } = require("./file-access");
+const { findSalesFiles } = require("./file-access");
 
-console.log('Welcome to this application');
-readDirectory("../stores");
-readDirectoryWithFileTypes("../stores");
-// const myOrder = "I want to order: 5 sushi to address: 1234 Denis Montroyal and here is my payment info: giftcard";
-// const myParsedOrder = parse(myOrder);
-// console.log(myParsedOrder.address);
+async function main() {
+    console.log('Welcome to the Tailwind Traders backend server application');
+    const salesFiles = await findSalesFiles("../stores");
+    console.log(salesFiles);
+}
+
+main();
