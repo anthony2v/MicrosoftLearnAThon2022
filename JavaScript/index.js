@@ -13,11 +13,10 @@ async function main() {
 
     // create the sales totals folder if it doesn't exist
     const salesTotalsDirectory = path.join(__dirname, "salesTotals");
-    try {
+    if (await fs.stat(salesTotalsDirectory) === undefined)
         await fs.mkdir(salesTotalsDirectory);
-    } catch {
+    else
         console.log(`${salesTotalsDirectory} already exists`);
-    }
     
     // find all paths to all available sales files
     const salesFiles = await findSalesFiles(path.join(__dirname, "stores"));
