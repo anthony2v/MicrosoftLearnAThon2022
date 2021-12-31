@@ -1,6 +1,18 @@
 const fs = require("fs").promises;
 const path = require("path");
 
+exports.calculateSalesTotal = async function(salesFiles) {
+    let salesTotal = 0;
+    // loop over each file path in the salesFiles array
+    for (file of salesFiles) {
+        // read the file and parse the contents as JSON
+        const data = JSON.parse(await fs.readFile(file));
+        // Add the amount in the data.total field to the salesTotal variable
+        salesTotal += data.total;
+    }
+    return salesTotal;
+}
+
 exports.findSalesFiles = async function(folderName) {
     // this array will hold sales files as they are found
     const salesFiles = [];
